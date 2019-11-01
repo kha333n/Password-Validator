@@ -68,6 +68,7 @@ inline void vldtr::display()
 	while (x < length)
 	{
 		std::cout << password[x];
+		x++;
 	}
 	if (length == 0)
 	{
