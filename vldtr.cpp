@@ -4,8 +4,8 @@
 
 inline bool vldtr::verify(char *input)
 {
-	short symbbol = 0, alpha = 0, digit = 0, whitespace = 1;
-	short password_length = strlen(input);
+	short symbol = 0, alpha = 0, digit = 0;
+	short password_length = (short) strlen(input);
 	if (password_length < 8 || password_length > 20)
 	{
 		return false;
@@ -17,12 +17,11 @@ inline bool vldtr::verify(char *input)
 		{
 			if(isspace(input[counter]))
 			{
-				whitespace = 0;
 				return false;
 			}
 			if( ispunct(input[counter]) )
 			{
-				symbbol = 1;
+				symbol = 1;
 				counter++;
 				continue;
 			}
@@ -41,7 +40,7 @@ inline bool vldtr::verify(char *input)
         counter++;
 		}
 
-	if ((symbbol == 0) || (digit == 0) || (alpha == 0))
+	if ((symbol == 0) || (digit == 0) || (alpha == 0))
 	{
 		return false;
 	}
@@ -53,7 +52,7 @@ inline vldtr::vldtr(char *input)
 {
 	if (verify(input))
 	{
-		short strlength = strlen(input), x = 0;
+		short strlength = (short) strlen(input), x = 0;
 		while (x <strlength)
 		{
 			password[x] = input[x];
@@ -64,7 +63,7 @@ inline vldtr::vldtr(char *input)
 
 inline void vldtr::display()
 {
-	short length = strlen(password), x = 0;
+	short length = (short) strlen(password), x = 0;
 	while (x < length)
 	{
 		std::cout << password[x];
@@ -72,6 +71,10 @@ inline void vldtr::display()
 	}
 	if (length == 0)
 	{
-		std::cout << "Invalid password was Entered.";
+		std::cout << "Invalid password was Entered." << std::endl << std::endl;
 	}
+	 else
+    {
+        std::cout << "Password is valid." << std::endl << std::endl;
+    }
 }
